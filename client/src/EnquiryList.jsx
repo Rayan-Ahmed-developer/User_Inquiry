@@ -11,7 +11,7 @@ import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 export default function EnquiryList({data,getAllenquiry,setformData}) {
     let deleteRow=(delid)=>{
-      axios.delete(`http://localhost:8020/api/website/enquiry/delete/${delid}`)
+      axios.delete(`https://task-manager-production-7ec3.up.railway.app/api/website/enquiry/delete/${delid}`)
       .then((res)=>{
         toast.success('Enquiry Deleted Successfully!')
         getAllenquiry()
@@ -20,7 +20,7 @@ export default function EnquiryList({data,getAllenquiry,setformData}) {
   }
 
     let editRow=(editid)=>{
-      axios.get(`http://localhost:8020/api/website/enquiry/single/${editid}`)
+      axios.get(`https://task-manager-production-7ec3.up.railway.app/api/website/enquiry/single/${editid}`)
       .then((res)=>{
         let data = res.data
         setformData(data.enquiry)

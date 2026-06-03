@@ -6,7 +6,7 @@ require('dotenv').config();
 let app = express();
 
 app.use(cors({
-    origin: 'https://user-inquiry.vercel.app', // Sirf aapka frontend allow hoga
+    origin: 'https://user-inquiry.vercel.app/', // Sirf aapka frontend allow hoga
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Jo methods aap use kar rahe hain
     credentials: true
 }));

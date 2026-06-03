@@ -6,10 +6,8 @@ require('dotenv').config();
 
 let app = express();
 
-// 1. CORS Fix: Slash (/) hata diya aur safe tareeqa laga diya
 app.use(cors({
-    origin: 'https://user-inquiry.vercel.app', // 💥 FIX: No trailing slash!
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // OPTIONS zaroori hai
+    origin: 'https://user-inquiry.vercel.app', 
     credentials: true
 }));
 

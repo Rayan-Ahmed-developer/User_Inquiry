@@ -8,18 +8,16 @@ let app = express();
 app.use(cors());
 app.use(express.json());
 
-//Routes
-app.use('/api/website/enquiry',enquiryRouter);
+// Routes
+app.use('/api/website/enquiry', enquiryRouter);
 
-
-mongoose.connect(process.env.DBURL).then(()=>{
-    console.log("connected to MongoDB");
-    app.listen(process.env.PORT || 3000, () => {
-   console.log("Server is running on port", process.env.PORT || 3000);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log("Server is running on port", PORT);
 });
-    // app.listen(process.env.PORT|| 3000,()=>{
-    //    console.log("server is running on");
-    // });
-}).catch((err)=>{
-    console.log("error connecting to MongoDB",err);
+
+mongoose.connect(process.env.DBURL).then(() => {
+    console.log("connected to MongoDB");
+}).catch((err) => {
+    console.log("error connecting to MongoDB", err);
 });

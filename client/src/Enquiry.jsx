@@ -23,7 +23,7 @@ const Enquiry = () => {
     if (formData._id) {
       axios
         .put(
-          `https://task-manager-production-7ec3.up.railway.app/api/website/enquiry/update/${formData._id}`,
+          `https://userinquiry-production.up.railway.app/api/website/enquiry/update/${formData._id}`,
           formData
         )
         .then(() => {
@@ -40,7 +40,7 @@ const Enquiry = () => {
     } else {
       axios
         .post(
-          "https://task-manager-production-7ec3.up.railway.app/api/website/enquiry/insert",
+          "https://userinquiry-production.up.railway.app/api/website/enquiry/insert",
           formData
         )
         .then(() => {
@@ -59,7 +59,7 @@ const Enquiry = () => {
   // GET ALL
   let getAllenquiry = () => {
     axios
-      .get("https://task-manager-production-7ec3.up.railway.app/api/website/enquiry/view")
+      .get("https://userinquiry-production.up.railway.app/api/website/enquiry/view")
       .then((res) => {
         if (res.data.status) {
           setenquiryList(res.data.enquiryList);

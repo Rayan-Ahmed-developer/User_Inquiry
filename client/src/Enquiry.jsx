@@ -9,7 +9,7 @@ const Enquiry = () => {
   const [enquiryList, setEnquiryList] = useState([]);
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "", _id: "" });
 
-  const BASE_URL = "https://userinquiry-production.up.railway.app/api/website/enquiry";
+  const BASE_URL = "https://userinquiry-production-8086.up.railway.app/api/website/enquiry";
 
   const fetchEnquiries = async () => {
     try {

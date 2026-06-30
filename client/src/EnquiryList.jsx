@@ -10,7 +10,7 @@ export default function EnquiryList({ data = [], refresh, setFormData }) {
 
     try {
       await axios.delete(
-        `https://userinquiry-production.up.railway.app/api/website/enquiry/delete/${id}`
+        `https://userinquiry-production-8086.up.railway.app/api/website/enquiry/delete/${id}`
       );
 
       toast.success("Deleted successfully!");

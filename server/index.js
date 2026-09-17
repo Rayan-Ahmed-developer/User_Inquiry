@@ -9,21 +9,25 @@ let app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use('/api/website/enquiry', enquiryRouter);
-
-let isConnected = false;
+let dbPromise = null;
 
 async function connectDB() {
-  if (isConnected) return;
+  if (mongoose.connection.readyState === 1) return;
 
-  if (mongoose.connection.readyState === 1) {
-    isConnected = true;
-    return;
+  if (!dbPromise) {
+    dbPromise = mongoose.connect(process.env.DBURL, {
+      serverSelectionTimeoutMS: 10000,
+      bufferCommands: false,
+    });
   }
 
-  await mongoose.connect(process.env.DBURL);
-  isConnected = true;
-  console.log("connected to MongoDB");
+  try {
+    await dbPromise;
+    console.log("connected to MongoDB");
+  } catch (err) {
+    dbPromise = null;
+    throw err;
+  }
 }
 
 app.use(async (req, res, next) => {
@@ -35,6 +39,8 @@ app.use(async (req, res, next) => {
     res.status(500).json({ error: "Database connection failed" });
   }
 });
+
+app.use('/api/website/enquiry', enquiryRouter);
 
 const PORT = process.env.PORT || 3000;
 
